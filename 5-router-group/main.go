@@ -12,9 +12,11 @@ package main
 import (
 	"gee"
 	"net/http"
+	"fmt"
 )
 
 func main() {
+	fmt.Print("手机终端体检代码测试")
 	r := gee.New() // engine
 	r.GET("/index", func(c *gee.Context) {
 		c.HTML(http.StatusOK, "<h1>Hello index Page</h1>")

@@ -15,13 +15,18 @@ import (
 
 func main() {
 	r := gee.New() // engine
-	r.GET("/", func(c *gee.Context) {
-		c.HTML(http.StatusOK, "<h1>Hello Gee</h1>")
-	})
+	// r.GET("/", func(c *gee.Context) {
+	// 	c.HTML(http.StatusOK, "<h1>Hello Gee</h1>")
+	// })
 
 	r.GET("/hello", func(c *gee.Context) {
 		// expect /hello?name=yzf
 		c.String(http.StatusOK, "hello %s, you're at %s\n", c.Query("name"), c.Path)
+	})
+
+	r.POST("/user", func(c *gee.Context) {
+		// expect /hello?name=yzf
+		c.String(http.StatusOK, "user")
 	})
 
 	r.GET("/hello/:name", func(c *gee.Context) {
@@ -39,4 +44,5 @@ func main() {
 	})
 
 	r.Run(":9999")
+
 }

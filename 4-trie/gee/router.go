@@ -12,13 +12,15 @@ type router struct {
 	handlers map[string]HandlerFunc
 }
 
-// roots key eg, roots['GET'] roots['POST']
+// roots key eg, roots['GET'] roots['POST'] roots["put"] roots["delete"] ...9种（9棵trie树）
 // handlers key eg, handlers['GET-/p/:lang/doc'], handlers['POST-/p/book']
 func newRouter() *router {
-	return &router{
+	temp := &router{
 		roots:    make(map[string]*node),
 		handlers: make(map[string]HandlerFunc),
 	}
+
+	return temp
 }
 
 //
@@ -46,6 +48,7 @@ func (r *router) addRoute(method string, pattern string, handler HandlerFunc) {
 	log.Printf("注册了如下路由Route： %4s - %s", method, pattern)
 	parts := parsePattern(pattern)
 	key := method + "-" + pattern
+	// 每个方法一颗树，更利于查找
 	_, ok := r.roots[method]
 	if !ok {
 		r.roots[method] = &node{}

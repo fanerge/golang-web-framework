@@ -8,8 +8,8 @@
       "name": "Launch Package",
       "type": "go",
       "request": "launch",
-      "mode": "auto",
-      "program": "${fileDirname}"
+      "mode": "debug",
+      "program": "/Users/yuzhenfan/go/pros/golang-web-framework/4-trie/main.go"
     }
   ]
 }

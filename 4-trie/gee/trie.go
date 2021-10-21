@@ -40,6 +40,7 @@ func (n *node) matchChildren(part string) []*node {
 
 // 插入功能很简单，递归查找每一层的节点，如果没有匹配到当前part的节点，则新建一个
 func (n *node) insert(pattern string, parts []string, height int) {
+
 	if len(parts) == height {
 		n.pattern = pattern
 		return

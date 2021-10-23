@@ -9,7 +9,7 @@
       "type": "go",
       "request": "launch",
       "mode": "debug",
-      "program": "/Users/yuzhenfan/go/src/golang-web-framework/6-middleware/main.go"
+      "program": "/Users/yuzhenfan/Desktop/coding/golang/src/golang-web-framework/7-template/main.go"
     }
   ]
 }

@@ -1,6 +1,11 @@
 package main
 
-// 实现错误处理机制
+// mysql
+// 查找：select * from person where user_id=2
+// 模糊：select username, sex from person WHERE username LIKE '%yzf%'
+// 插入：insert into person(username, sex, email)VALUES("yyyy", "2", "fan@qq.com")
+// 更新：UPDATE person set username="6666" WHERE user_id=2
+// 删除：delete from person WHERE user_id=12
 
 import (
 	"fmt"
@@ -133,9 +138,10 @@ func deletePerson(userid interface{}) {
 }
 
 // MySQL事务
-// Db.Begin()        开始事务
-// Db.Commit()        提交事务
-// Db.Rollback()     回滚事务
+// conn := Db.Begin()        开始事务
+// conn.Exec() 			往事务中添加执行语句
+// Db.Rollback()     回滚事务（某个执行语句出错时，回滚）
+// Db.Commit()       提交事务
 func testss() {
 	conn, err := Db.Begin()
 	if err != nil {
@@ -159,7 +165,7 @@ func testss() {
 	fmt.Println("insert succ:", id)
 
 	// insert 2
-	r, err = conn.Exec("insert into person(username, sex, email)values(?, ?, ?)", "YY", 1, 123)
+	r, err = conn.Exec("insert into person(username, sex, email)values(?, ?, ?)", "YY", 1, "")
 	if err != nil {
 		fmt.Println("exec failed, ", err)
 		conn.Rollback()
